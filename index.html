@@ -1,200 +1,225 @@
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informe de Servicio</title>
-    <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informe de Servicio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <div class="app-shell">
-        <aside class="sidebar no-print">
-        <div class="brand">
-            <div class="brand-icon">IS</div>
-            <div>
-            <h2>Informes</h2>
-            <p>Sistema de Servicio</p>
-            </div>
-        </div>
-
-        <nav class="nav-menu">
-            <button class="nav-btn active" id="btnFormulario" onclick="mostrarFormulario()">📄 Nuevo Informe</button>
-            <button class="nav-btn" id="btnHistorial" onclick="mostrarHistorial()">📚 Historial</button>
-        </nav>
-        </aside>
-
-        <main class="main-content">
-        <header class="mobile-header no-print">
-            <h1>Sistema de Informes</h1>
-            <div class="mobile-actions">
-            <button onclick="mostrarFormulario()">Nuevo</button>
-            <button onclick="mostrarHistorial()">Historial</button>
-            </div>
-        </header>
-
-        <!-- FORMULARIO -->
-        <section id="formSection" class="page-section">
-            <div class="page-card">
-            <div class="doc-head">
-                <div>
-                <p class="tag">DOCUMENTO TÉCNICO</p>
-                <h2>Informe de Servicio</h2>
-                <p class="sub">Registro formal de inspección, revisión y validación</p>
-                </div>
-                <div class="order-badge">
-                <span>N° Orden</span>
-                <strong id="numeroOrdenTexto">ORD-0001</strong>
-                </div>
-            </div>
-
-            <form id="informeForm">
-                <div class="section-title">Datos Generales</div>
-
-                <div class="grid-3">
-                <div class="field">
-                    <label>Número de Orden</label>
-                    <input type="text" id="numeroOrden" readonly>
-                </div>
-                <div class="field">
-                    <label>Fecha</label>
-                    <input type="date" id="fecha" required>
-                </div>
-                <div class="field">
-                    <label>Hora</label>
-                    <input type="time" id="hora" required>
-                </div>
-                </div>
-
-                <div class="grid-3">
-                <div class="field">
-                    <label>Cliente Nombre / Contacto</label>
-                    <input type="text" id="cliente" required>
-                </div>
-                <div class="field">
-                    <label>Lugar</label>
-                    <input type="text" id="lugar" required>
-                </div>
-                <div class="field">
-                    <label>Teléfono</label>
-                    <input type="text" id="telefono" required>
-                </div>
-                </div>
-
-                <div class="grid-2">
-                <div class="field">
-                    <label>Emitido por</label>
-                    <input type="text" id="emitidoPor" required>
-                </div>
-                <div class="field">
-                    <label>Aprobado por</label>
-                    <input type="text" id="aprobadoPor" required>
-                </div>
-                </div>
-
-                <div class="section-title">Detalle del Servicio</div>
-
-                <div class="field">
-                <label>Tipo de Servicio</label>
-                <input type="text" id="tipoServicio" placeholder="Ej: Revisión, mantenimiento, instalación..." required>
-                </div>
-
-                <div class="field">
-                <label>Verificación de dispensadores o bombas</label>
-                <textarea id="verificacion" rows="4" required></textarea>
-                </div>
-
-                <div class="field">
-                <label>Diagnóstico</label>
-                <textarea id="diagnostico" rows="4" required></textarea>
-                </div>
-
-                <div class="field">
-                <label>Observaciones</label>
-                <textarea id="observaciones" rows="4"></textarea>
-                </div>
-
-                <div class="field">
-                <label>Recomendaciones</label>
-                <textarea id="recomendaciones" rows="4"></textarea>
-                </div>
-
-                <div class="grid-2">
-                <div class="field">
-                    <label>Estado</label>
-                    <select id="estado" required>
-                    <option value="">Seleccione...</option>
-                    <option value="Pendiente">Pendiente</option>
-                    <option value="Finalizado">Finalizado</option>
-                    <option value="Entregado">Entregado</option>
-                    </select>
-                </div>
-                </div>
-
-                <div class="section-title">Firmas Obligatorias</div>
-
-                <div class="signatures">
-                <div class="signature-box">
-                    <div class="signature-top">
-                    <div>
-                        <h4>Firma 1</h4>
-                        <p>Emitido por</p>
-                    </div>
-                    <button type="button" class="mini-btn no-print" onclick="limpiarFirma('firma1')">Limpiar</button>
-                    </div>
-                    <canvas id="firma1" width="400" height="180"></canvas>
-                </div>
-
-                <div class="signature-box">
-                    <div class="signature-top">
-                    <div>
-                        <h4>Firma 2</h4>
-                        <p>Aprobado por</p>
-                    </div>
-                    <button type="button" class="mini-btn no-print" onclick="limpiarFirma('firma2')">Limpiar</button>
-                    </div>
-                    <canvas id="firma2" width="400" height="180"></canvas>
-                </div>
-                </div>
-
-                <div class="actions no-print">
-                <button type="submit" class="save-btn">Guardar Informe</button>
-                <button type="button" onclick="limpiarFormulario()" class="secondary-btn">Limpiar Todo</button>
-                </div>
-            </form>
-            </div>
-        </section>
-
-<!-- HISTORIAL -->
-<section id="historySection" class="page-section hidden">
-    <div class="page-card">
-    <div class="history-top">
+  <div class="app-shell">
+    <aside class="sidebar no-print">
+      <div class="brand">
+        <div class="brand-icon">IS</div>
         <div>
-        <p class="tag">REGISTRO</p>
-        <h2>Historial de Informes</h2>
+          <h2>Informes</h2>
+          <p>Sistema de Servicio</p>
         </div>
-        <input type="text" id="buscarInforme" placeholder="Buscar por orden, cliente o teléfono..." onkeyup="renderHistorial()">
-    </div>
+      </div>
 
-    <div id="resumenStats" class="stats-grid"></div>
-    <div id="historialLista" class="history-list"></div>
-    </div>
-    </section>
+      <nav class="nav-menu">
+        <button class="nav-btn active" id="btnFormulario" onclick="mostrarFormulario()">📄 Nuevo Informe</button>
+        <button class="nav-btn" id="btnHistorial" onclick="mostrarHistorial()">📚 Historial</button>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="mobile-header no-print">
+        <h1>Sistema de Informes</h1>
+        <div class="mobile-actions">
+          <button onclick="mostrarFormulario()">Nuevo</button>
+          <button onclick="mostrarHistorial()">Historial</button>
+        </div>
+      </header>
+
+      <!-- FORMULARIO -->
+      <section id="formSection" class="page-section">
+        <div class="page-card">
+          <div class="doc-head">
+            <div>
+              <p class="tag">DOCUMENTO TÉCNICO</p>
+              <h2>Informe de Servicio</h2>
+              <p class="sub">Registro formal de inspección, revisión y validación</p>
+            </div>
+            <div class="order-badge">
+              <span>N° Orden</span>
+              <strong id="numeroOrdenTexto">ORD-0001</strong>
+            </div>
+          </div>
+
+          <form id="informeForm">
+            <div class="section-title">Datos Generales</div>
+
+            <div class="grid-3">
+              <div class="field">
+                <label>Número de Orden</label>
+                <input type="text" id="numeroOrden" readonly>
+              </div>
+              <div class="field">
+                <label>Fecha</label>
+                <input type="date" id="fecha" required>
+              </div>
+              <div class="field">
+                <label>Hora</label>
+                <input type="time" id="hora" required>
+              </div>
+            </div>
+
+            <div class="grid-3">
+              <div class="field">
+                <label>Cliente Nombre / Contacto</label>
+                <input type="text" id="cliente" required>
+              </div>
+              <div class="field">
+                <label>Lugar</label>
+                <input type="text" id="lugar" required>
+              </div>
+              <div class="field">
+                <label>Teléfono</label>
+                <input type="text" id="telefono" required>
+              </div>
+            </div>
+
+            <div class="grid-2">
+              <div class="field">
+                <label>Emitido por</label>
+                <input type="text" id="emitidoPor" required>
+              </div>
+              <div class="field">
+                <label>Aprobado por</label>
+                <input type="text" id="aprobadoPor" required>
+              </div>
+            </div>
+
+            <div class="section-title">Detalle del Servicio</div>
+
+            <div class="field">
+              <label>Tipo de Servicio</label>
+              <input type="text" id="tipoServicio" placeholder="Ej: Revisión, mantenimiento, instalación..." required>
+            </div>
+
+            <div class="field">
+              <label>Verificación de dispensadores o bombas</label>
+              <textarea id="verificacion" rows="4" required></textarea>
+            </div>
+
+            <div class="field">
+              <label>Diagnóstico</label>
+              <textarea id="diagnostico" rows="4" required></textarea>
+            </div>
+
+            <div class="field">
+              <label>Observaciones</label>
+              <textarea id="observaciones" rows="4"></textarea>
+            </div>
+
+            <div class="field">
+              <label>Recomendaciones</label>
+              <textarea id="recomendaciones" rows="4"></textarea>
+            </div>
+
+            <div class="grid-2">
+              <div class="field">
+                <label>Estado</label>
+                <select id="estado" required>
+                  <option value="">Seleccione...</option>
+                  <option value="Pendiente">Pendiente</option>
+                  <option value="Finalizado">Finalizado</option>
+                  <option value="Entregado">Entregado</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="section-title">Firmas Obligatorias</div>
+
+            <div class="signatures">
+              <div class="signature-box">
+                <div class="signature-top">
+                  <div>
+                    <h4>Firma 1</h4>
+                    <p>Emitido por</p>
+                  </div>
+                  <button type="button" class="mini-btn no-print" onclick="abrirFirmaModal('firma1')">Firmar</button>
+                </div>
+
+                <canvas id="firma1"></canvas>
+                <div class="signature-status" id="estadoFirma1">⚠️ Firma pendiente</div>
+              </div>
+
+              <div class="signature-box">
+                <div class="signature-top">
+                  <div>
+                    <h4>Firma 2</h4>
+                    <p>Aprobado por</p>
+                  </div>
+                  <button type="button" class="mini-btn no-print" onclick="abrirFirmaModal('firma2')">Firmar</button>
+                </div>
+
+                <canvas id="firma2"></canvas>
+                <div class="signature-status" id="estadoFirma2">⚠️ Firma pendiente</div>
+              </div>
+            </div>
+
+            <div class="actions no-print">
+              <button type="submit" class="save-btn">Guardar Informe</button>
+              <button type="button" onclick="limpiarFormulario()" class="secondary-btn">Limpiar Todo</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- HISTORIAL -->
+      <section id="historySection" class="page-section hidden">
+        <div class="page-card">
+          <div class="history-top">
+            <div>
+              <p class="tag">REGISTRO</p>
+              <h2>Historial de Informes</h2>
+            </div>
+            <input type="text" id="buscarInforme" placeholder="Buscar por orden, cliente o teléfono..." onkeyup="renderHistorial()">
+          </div>
+
+          <div id="resumenStats" class="stats-grid"></div>
+          <div id="historialLista" class="history-list"></div>
+        </div>
+      </section>
     </main>
-</div>
+  </div>
 
-<!-- MODAL -->
-<div id="modalVista" class="modal hidden">
+  <!-- MODAL VISTA PREVIA -->
+  <div id="modalVista" class="modal hidden">
     <div class="modal-content">
-    <div class="modal-actions no-print">
+      <div class="modal-actions no-print">
         <button onclick="imprimirInforme()">Guardar / Imprimir PDF</button>
         <button class="secondary-btn" onclick="cerrarVista()">Cerrar</button>
+      </div>
+      <div id="contenidoVista"></div>
     </div>
-    <div id="contenidoVista"></div>
-    </div>
-</div>
+  </div>
 
-<script src="script.js"></script>
+  <!-- MODAL FIRMA PANTALLA COMPLETA -->
+  <div id="firmaModal" class="firma-modal hidden">
+    <div class="firma-modal-content">
+      <div class="firma-modal-header no-print">
+        <div>
+          <p class="tag">FIRMA DIGITAL</p>
+          <h2 id="tituloFirmaModal">Firma</h2>
+        </div>
+        <button class="secondary-btn" onclick="cerrarFirmaModal()">Cerrar</button>
+      </div>
+
+      <div class="firma-modal-body">
+        <canvas id="firmaCanvasGrande"></canvas>
+      </div>
+
+      <div class="firma-modal-actions no-print">
+        <button class="secondary-btn" onclick="limpiarFirmaGrande()">Limpiar</button>
+        <button class="save-btn" onclick="guardarFirmaGrande()">Guardar Firma</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
-<!-- Creado por Dinorex2 en github -->
